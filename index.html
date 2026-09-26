@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Creative Technologies | Digital Marketing, Business & Technology Solutions</title>
+    <meta name="description" content="Prime Creative Technologies provides digital marketing, video editing, social media management, SEO, business solutions, technology services and online learning.">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://primecreative.tech/">
+    <meta property="og:title" content="Prime Creative Technologies | Digital Marketing & Business Solutions">
+    <meta property="og:description" content="Creative technology and business solutions designed to help brands grow, operate smarter, and build a stronger digital presence.">
+    <meta property="og:image" content="https://niyazio.com/wp-content/uploads/2026/09/digital-agency-hero.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://primecreative.tech/">
+    <meta property="twitter:title" content="Prime Creative Technologies">
+    <meta property="twitter:description" content="Creative technology and business solutions designed to help brands grow, operate smarter, and build a stronger digital presence.">
+    <meta property="twitter:image" content="https://niyazio.com/wp-content/uploads/2026/09/digital-agency-hero.png">
+    
+    <link rel="canonical" href="https://primecreative.tech/" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Phosphor Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Prime Creative Technologies",
+      "url": "https://primecreative.tech",
+      "logo": "https://niyazio.com/wp-content/uploads/2026/09/Untitled-design-1.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-72591-84159",
+        "contactType": "customer service",
+        "email": "primeerptechnologies@gmail.com"
+      }
+    }
+    </script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            yellow: '#FACC15',
+                            dark: '#09090B',
+                            gray: '#FAFAFA',
+                            blue: '#3B82F6',
+                            red: '#EF4444'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'modal-in': 'modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: 0 },
+                            '100%': { opacity: 1 },
+                        },
+                        slideUp: {
+                            '0%': { opacity: 0, transform: 'translateY(40px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        },
+                        modalIn: {
+                            '0%': { opacity: 0, transform: 'scale(0.95) translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'scale(1) translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styles & Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #fafafa; }
+        ::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #d4d4d8; }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        body.modal-open { overflow: hidden; }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Intersection Observer Animations */
+        @media (prefers-reduced-motion: no-preference) {
+            .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+            .reveal.active { opacity: 1; transform: translateY(0); }
+            .reveal-delay-1 { transition-delay: 100ms; }
+            .reveal-delay-2 { transition-delay: 200ms; }
+            .reveal-delay-3 { transition-delay: 300ms; }
+            .reveal-delay-4 { transition-delay: 400ms; }
+        }
+        
+        .img-hover-zoom { overflow: hidden; }
+        .img-hover-zoom img { transition: transform 0.7s ease; }
+        .img-hover-zoom:hover img { transform: scale(1.05); }
+    </style>
+</head>
+<body class="bg-white text-brand-dark font-sans antialiased overflow-x-hidden selection:bg-brand-yellow selection:text-black">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        
+        const SITE_CONFIG = {
+            name: "Prime Creative Technologies",
+            shortName: "PCT",
+            email: "primeerptechnologies@gmail.com",
+            phone: "72591 84159",
+            phoneLink: "tel:+917259184159",
+            whatsapp: "https://wa.me/917259184159",
+            socials: {
+                instagram: "https://www.instagram.com/prime_creative_technologies?stkn=MWt5ajd4NjhqanFrMQ==",
+                linkedin: "https://www.linkedin.com/company/prime-erp-technologies/"
+            }
+        };
+
+        const ADSENSE_CONFIG = {
+            clientId: "", // Replace with real publisher ID later
+            slotId: ""
+        };
+
+        const IMAGES = {
+            logo: "https://niyazio.com/wp-content/uploads/2026/09/Untitled-design-1.png",
+            hero: "https://niyazio.com/wp-content/uploads/2026/09/digital-agency-hero.png",
+            digitalMarketing: "https://niyazio.com/wp-content/uploads/2026/09/Digital-Marketing.png",
+            videoEditing: "https://niyazio.com/wp-content/uploads/2026/09/Video-Editing.png",
+            creativeStudio: "https://niyazio.com/wp-content/uploads/2026/09/Video-Editing-Creative-Studio.png",
+            socialMedia: "https://niyazio.com/wp-content/uploads/2026/09/Social-Media-Management.png",
+            seo: "https://niyazio.com/wp-content/uploads/2026/09/SEO-Analytics.png",
+            gbp: "https://niyazio.com/wp-content/uploads/2026/09/Google-Business-Profile.png",
+            marketAnalysis: "https://niyazio.com/wp-content/uploads/2026/09/Business-Market-Analysis.png",
+            businessSetup: "https://niyazio.com/wp-content/uploads/2026/09/Business-Setup.png",
+            onlineLearning: "https://niyazio.com/wp-content/uploads/2026/09/Online-learnings.png",
+            sap: "https://niyazio.com/wp-content/uploads/2026/09/Technology-SAP.png"
+        };
+
+        const SERVICES_DATA = [
+            { 
+                id: 'Digital Marketing', title: 'Digital Marketing', icon: 'ph-trend-up', cat: 'Growth',
+                desc: 'Data-driven campaigns that drive attention into measurable action.',
+                problem: 'Many businesses have social media accounts but lack a clear strategy, consistent content, targeted campaigns, and measurable goals.',
+                solution: ['Digital strategy', 'Content planning', 'Campaign planning', 'Lead generation', 'Social media marketing', 'Performance analysis', 'Growth planning'],
+                deliverables: 'Monthly strategy reports, managed ad accounts, clear KPI tracking.',
+                whoFor: 'Brands looking to scale revenue and capture targeted market share.'
+            },
+            { 
+                id: 'Video Editing', title: 'Video Editing', icon: 'ph-video-camera', cat: 'Creative',
+                desc: 'High-retention visual storytelling for social media and business.',
+                problem: 'Raw footage rarely tells a compelling story. Audiences have short attention spans and demand high-quality, engaging visual content.',
+                solution: ['Reels & Short-form', 'YouTube editing', 'Promotional videos', 'Corporate content', 'Educational videos'],
+                deliverables: 'Fully edited, color-graded, and sound-mixed videos optimized for chosen platforms.',
+                whoFor: 'Content creators, businesses, and educators needing professional polish.'
+            },
+            { 
+                id: 'Social Media Management', title: 'Social Media Management', icon: 'ph-users-three', cat: 'Growth',
+                desc: 'Strategic content planning and community growth.',
+                problem: 'Inconsistent posting and generic content lead to dead accounts and zero engagement.',
+                solution: ['Content calendar creation', 'Post design', 'Caption writing', 'Community management', 'Performance reporting'],
+                deliverables: 'A month-in-advance content schedule and managed daily interactions.',
+                whoFor: 'Founders who need to focus on operations while we handle their digital presence.'
+            },
+            { 
+                id: 'SEO & Analytics', title: 'SEO & Analytics', icon: 'ph-magnifying-glass', cat: 'Tech',
+                desc: 'Technical and on-page optimization to dominate search results.',
+                problem: 'Having a beautiful website doesn\'t matter if customers cannot find it on search engines.',
+                solution: ['Technical SEO audits', 'On-page optimization', 'Keyword research', 'Search visibility tracking', 'Analytics setup'],
+                deliverables: 'Search ranking reports, optimized meta-data, and continuous traffic analysis.',
+                whoFor: 'Websites struggling for organic traffic and visibility.'
+            },
+            { 
+                id: 'Google Business Profile', title: 'Google Business Profile', icon: 'ph-map-pin', cat: 'Local',
+                desc: 'Local search optimization to make your business easy to find.',
+                problem: 'Local customers are searching for your services, but competitors are showing up first on Google Maps.',
+                solution: ['Profile setup & verification', 'Category optimization', 'Review management strategy', 'Local SEO enhancement'],
+                deliverables: 'A fully optimized, active, and high-ranking local business profile.',
+                whoFor: 'Retail stores, clinics, restaurants, and local service providers.'
+            },
+            { 
+                id: 'Business & Market Analysis', title: 'Business & Market Analysis', icon: 'ph-chart-line-up', cat: 'Consulting',
+                desc: 'Market research and competitor analysis for informed decisions.',
+                problem: 'Investing time and capital without understanding the competitive landscape leads to costly mistakes.',
+                solution: ['Market research', 'Competitor analysis', 'Customer profiling', 'Opportunity identification'],
+                deliverables: 'Comprehensive market reports and strategic positioning documents.',
+                whoFor: 'New ventures and businesses looking to enter new markets.'
+            },
+            { 
+                id: 'Business Setup', title: 'Business Setup', icon: 'ph-rocket-launch', cat: 'Consulting',
+                desc: 'End-to-end operational and digital setup for new ventures.',
+                problem: 'Starting a business involves fragmented tasks—from digital presence to workflows—causing launch delays.',
+                solution: ['Business planning', 'Digital presence setup', 'Workflow planning', 'Technology recommendations'],
+                deliverables: 'A structured launch roadmap and initial operational deployment.',
+                whoFor: 'Entrepreneurs and startups needing a solid foundational launch.'
+            },
+            { 
+                id: 'Budgeting & Planning', title: 'Budgeting & Planning', icon: 'ph-calculator', cat: 'Consulting',
+                desc: 'Strategic resource allocation and growth roadmaps.',
+                problem: 'Mismanaged resources and unclear financial roadmaps stifle business growth.',
+                solution: ['Startup budgeting', 'Marketing budget allocation', 'Operational cost planning', 'Resource forecasting'],
+                deliverables: 'Structured financial planning models and budget allocation strategies.',
+                whoFor: 'Founders needing clarity on where to invest their capital for maximum ROI.'
+            },
+            { 
+                id: 'Daily Operations Setup', title: 'Daily Operations Setup', icon: 'ph-gear', cat: 'Operations',
+                desc: 'Workflow optimization and system building for efficiency.',
+                problem: 'Manual, repetitive tasks and disjointed systems cause bottlenecks and human error.',
+                solution: ['Workflow design', 'SOP creation', 'Staff task systems', 'Digital tool implementation'],
+                deliverables: 'Documented standard operating procedures and integrated operational tools.',
+                whoFor: 'Growing teams that need systemized, scalable daily workflows.'
+            },
+            { 
+                id: 'SAP & Software Solutions', title: 'SAP & Software Solutions', icon: 'ph-desktop', cat: 'Tech',
+                desc: 'Authorized access solutions and business software setup.',
+                problem: 'Businesses struggle to implement and utilize complex ERP software efficiently.',
+                solution: ['Authorized SAP support', 'Software setup', 'Digital workflow integration', 'Systems guidance'],
+                deliverables: 'Configured software environments and team usage guidelines.',
+                whoFor: 'Enterprises and mid-sized businesses requiring robust systems.'
+            },
+            { 
+                id: 'Digital Vouchers', title: 'Digital Vouchers', icon: 'ph-ticket', cat: 'Products',
+                desc: 'Implementation of appropriate digital products and vouchers.',
+                problem: 'Businesses need streamlined ways to offer digital access or redeemable products.',
+                solution: ['Digital product setup', 'Voucher distribution systems', 'Integration support'],
+                deliverables: 'A working system for distributing and managing digital vouchers.',
+                whoFor: 'E-commerce and businesses offering digital redemption.'
+            },
+            { 
+                id: 'Online Learning', title: 'Online Learning', icon: 'ph-graduation-cap', cat: 'Education',
+                desc: 'Professional courses in digital skills and business planning.',
+                problem: 'Professionals and teams lack practical, up-to-date digital skills required in the modern market.',
+                solution: ['Digital skills curriculum', 'Practical assignments', 'Software training'],
+                deliverables: 'Course access, learning materials, and skill assessment.',
+                whoFor: 'Individuals and teams wanting to upskill in tech and marketing.'
+            },
+            { 
+                id: 'Digital Marketing Training', title: 'Digital Marketing Training', icon: 'ph-chalkboard-teacher', cat: 'Education',
+                desc: 'Deep-dive training into practical marketing strategies.',
+                problem: 'Theoretical marketing knowledge doesn\'t translate to actual campaign performance.',
+                solution: ['Hands-on campaign training', 'Analytics deep-dive', 'Content strategy workshops'],
+                deliverables: 'Practical knowledge required to run live digital campaigns.',
+                whoFor: 'Marketing teams and solo entrepreneurs.'
+            },
+            { 
+                id: 'Business Growth Consulting', title: 'Business Growth Consulting', icon: 'ph-lightbulb', cat: 'Consulting',
+                desc: 'Strategic advice to unblock growth and scale operations.',
+                problem: 'Businesses hit a plateau and struggle to identify the levers needed to reach the next level.',
+                solution: ['Growth audits', 'Strategic advisory', 'Process optimization recommendations'],
+                deliverables: 'Actionable growth blueprints and strategic consulting sessions.',
+                whoFor: 'Established businesses looking to scale.'
+            }
+        ];
+
+        const { useState, useEffect, useRef } = React;
+
+        const useIntersectionObserver = () => {
+            useEffect(() => {
+                if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+                    return;
+                }
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            // Optional: Stop observing once active
+                            // observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+                document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+                return () => observer.disconnect();
+            }, []);
+        };
+
+        const useScrollPosition = () => {
+            const [scrollPos, setScrollPos] = useState(0);
+            useEffect(() => {
+                const updatePosition = () => setScrollPos(window.scrollY);
+                window.addEventListener('scroll', updatePosition);
+                updatePosition();
+                return () => window.removeEventListener('scroll', updatePosition);
+            }, []);
+            return scrollPos;
+        };
+
+        
+        const Button = ({ children, variant = 'primary', className = '', icon = true, ...props }) => {
+            const baseStyle = "inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold transition-all duration-300 rounded-full group outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-dark";
+            const variants = {
+                primary: "bg-brand-dark text-white hover:bg-zinc-800 shadow-lg hover:shadow-xl",
+                secondary: "bg-brand-yellow text-black hover:bg-yellow-400 shadow-md",
+                outline: "border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white",
+                ghost: "text-brand-dark hover:text-brand-yellow bg-white/50 hover:bg-white"
+            };
+            
+            return (
+                <button className={`${baseStyle} ${variants[variant]} ${className}`} {...props}>
+                    {children}
+                    {icon && <i className="ph ph-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>}
+                </button>
+            );
+        };
+
+        const Badge = ({ children, color = 'yellow' }) => {
+            const colors = {
+                yellow: 'bg-yellow-50 text-yellow-800 border-yellow-200',
+                gray: 'bg-zinc-100 text-zinc-800 border-zinc-200',
+                dark: 'bg-zinc-900 text-zinc-100 border-zinc-700',
+                blue: 'bg-blue-50 text-blue-800 border-blue-200'
+            };
+            return (
+                <span className={`px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-full border ${colors[color]}`}>
+                    {children}
+                </span>
+            );
+        };
+
+        const SectionHeader = ({ badge, title, subtitle, align = 'center', dark = false }) => (
+            <div className={`mb-12 md:mb-16 reveal max-w-3xl ${align === 'center' ? 'mx-auto text-center' : ''}`}>
+                {badge && <div className="mb-5"><Badge color={dark ? 'dark' : 'yellow'}>{badge}</Badge></div>}
+                <h2 className={`text-3xl md:text-5xl font-extrabold tracking-tight mb-6 leading-tight ${dark ? 'text-white' : 'text-brand-dark'}`}>
+                    {title}
+                </h2>
+                {subtitle && <p className={`text-lg leading-relaxed ${dark ? 'text-zinc-400' : 'text-zinc-600'}`}>{subtitle}</p>}
+            </div>
+        );
+
+        const AdSenseUnit = () => {
+            if (!ADSENSE_CONFIG.clientId) return null;
+            return (
+                <div className="w-full overflow-hidden my-8 flex justify-center bg-zinc-50 py-4 border border-zinc-100 rounded-xl text-xs text-zinc-400">
+                    {/* Placeholder when ID is missing in prompt, will be real ad in prod */}
+                    <span>Advertisement Space</span>
+                </div>
+            );
+        };
+
+        
+        const FloatingContact = () => (
+            <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+                <a href={SITE_CONFIG.phoneLink} className="w-12 h-12 bg-brand-dark text-white rounded-full shadow-lg flex items-center justify-center text-xl hover:scale-110 transition-transform focus:ring-2 focus:ring-offset-2 focus:ring-brand-dark" aria-label="Call Us">
+                    <i className="ph ph-phone"></i>
+                </a>
+                <a href={SITE_CONFIG.whatsapp} target="_blank" rel="noopener noreferrer" className="w-14 h-14 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-2xl hover:scale-110 transition-transform focus:ring-2 focus:ring-offset-2 focus:ring-green-500" aria-label="WhatsApp Us">
+                    <i className="ph ph-whatsapp-logo"></i>
+                </a>
+            </div>
+        );
+
+        const ServiceModal = ({ service, isOpen, onClose, onSelectService }) => {
+            const modalRef = useRef();
+
+            useEffect(() => {
+                const handleEsc = (e) => { if (e.key === 'Escape') onClose(); };
+                if (isOpen) {
+                    document.body.classList.add('modal-open');
+                    document.addEventListener('keydown', handleEsc);
+                    // Basic focus trap attempt
+                    setTimeout(() => modalRef.current?.focus(), 100);
+                } else {
+                    document.body.classList.remove('modal-open');
+                }
+                return () => {
+                    document.removeEventListener('keydown', handleEsc);
+                    document.body.classList.remove('modal-open');
+                };
+            }, [isOpen, onClose]);
+
+            if (!isOpen || !service) return null;
+
+            const handleRequestClick = () => {
+                onSelectService(service.id);
+                onClose();
+            };
+
+            return (
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onClick={onClose} aria-hidden="true"></div>
+                    
+                    {/* Modal Content */}
+                    <div ref={modalRef} tabIndex="-1" className="bg-white rounded-3xl shadow-2xl w-full max-w-[900px] max-h-[90vh] overflow-y-auto relative z-10 animate-modal-in outline-none flex flex-col md:flex-row">
+                        
+                        {/* Close Button Mobile */}
+                        <button onClick={onClose} className="md:hidden absolute top-4 right-4 w-10 h-10 bg-zinc-100 rounded-full flex items-center justify-center text-zinc-600 hover:bg-zinc-200 z-20">
+                            <i className="ph ph-x text-xl"></i>
+                        </button>
+
+                        {/* Left/Top visual column */}
+                        <div className="md:w-1/3 bg-brand-dark text-white p-8 md:p-10 flex flex-col">
+                            <div className="w-16 h-16 bg-zinc-800 rounded-2xl flex items-center justify-center text-3xl text-brand-yellow mb-8">
+                                <i className={`ph ${service.icon}`}></i>
+                            </div>
+                            <h3 id="modal-title" className="text-2xl md:text-3xl font-bold mb-4">{service.title}</h3>
+                            <p className="text-zinc-400 text-sm leading-relaxed mb-8">{service.desc}</p>
+                            
+                            <div className="mt-auto hidden md:block">
+                                <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Who it's for</div>
+                                <p className="text-sm text-zinc-300">{service.whoFor}</p>
+                            </div>
+                        </div>
+
+                        {/* Right/Bottom content column */}
+                        <div className="md:w-2/3 p-8 md:p-10 relative">
+                            {/* Close Button Desktop */}
+                            <button onClick={onClose} className="hidden md:flex absolute top-6 right-6 w-10 h-10 bg-zinc-50 rounded-full items-center justify-center text-zinc-600 hover:bg-zinc-100 transition-colors">
+                                <i className="ph ph-x text-xl"></i>
+                            </button>
+
+                            <div className="space-y-8">
+                                <div>
+                                    <h4 className="text-sm font-bold text-brand-dark uppercase tracking-wide mb-3 flex items-center">
+                                        <i className="ph ph-warning-circle text-brand-red mr-2 text-lg"></i> The Problem
+                                    </h4>
+                                    <p className="text-zinc-600 leading-relaxed">{service.problem}</p>
+                                </div>
+
+                                <div className="bg-brand-gray p-6 rounded-2xl border border-zinc-100">
+                                    <h4 className="text-sm font-bold text-brand-dark uppercase tracking-wide mb-4 flex items-center">
+                                        <i className="ph ph-check-circle text-green-500 mr-2 text-lg"></i> How PCT Helps
+                                    </h4>
+                                    <ul className="grid sm:grid-cols-2 gap-3">
+                                        {service.solution.map((item, idx) => (
+                                            <li key={idx} className="flex items-start text-sm text-zinc-700">
+                                                <i className="ph ph-check text-brand-yellow mt-0.5 mr-2 font-bold"></i> {item}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h4 className="text-sm font-bold text-brand-dark uppercase tracking-wide mb-3 flex items-center">
+                                        <i className="ph ph-package text-brand-blue mr-2 text-lg"></i> Deliverables
+                                    </h4>
+                                    <p className="text-zinc-600 text-sm leading-relaxed">{service.deliverables}</p>
+                                </div>
+                                
+                                <div className="md:hidden pt-4 border-t border-zinc-100">
+                                    <div className="text-xs font-semibold text-zinc-500 uppercase tracking-wider mb-2">Who it's for</div>
+                                    <p className="text-sm text-zinc-700">{service.whoFor}</p>
+                                </div>
+
+                                <div className="pt-6 flex flex-col sm:flex-row gap-4">
+                                    <Button variant="primary" className="w-full sm:w-auto" onClick={handleRequestClick}>Request This Service</Button>
+                                    <Button variant="outline" className="w-full sm:w-auto" onClick={() => window.open(SITE_CONFIG.whatsapp, '_blank')}>WhatsApp Us</Button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+
+        const Navbar = () => {
+            const scrollPos = useScrollPosition();
+            const [isOpen, setIsOpen] = useState(false);
+            const isScrolled = scrollPos > 20;
+
+            const links = ['Services', 'Solutions', 'Education', 'Portfolio', 'Contact'];
+            
+            const handleNav = (id) => {
+                setIsOpen(false);
+                const el = document.getElementById(id.toLowerCase());
+                if(el) el.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'py-3 glass-panel shadow-sm' : 'py-5 bg-white md:bg-transparent'}`}>
+                    <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+                        {/* Logo */}
+                        <a href="#" className="relative z-50 flex items-center" aria-label="Prime Creative Technologies Home">
+                            <img src={IMAGES.logo} alt="Prime Creative Technologies Logo" className="h-10 md:h-12 w-auto object-contain" />
+                            <span className="hidden sm:block ml-3 font-bold text-[17px] text-brand-dark tracking-tight">Prime Creative Technologies</span>
+                        </a>
+
+                        {/* Desktop Nav */}
+                        <div className="hidden lg:flex items-center gap-8">
+                            <ul className="flex gap-8 text-sm font-semibold text-zinc-700">
+                                {links.map(link => (
+                                    <li key={link}>
+                                        <button onClick={() => handleNav(link)} className="hover:text-brand-dark transition-colors relative group">
+                                            {link}
+                                            <span className="absolute -bottom-1.5 left-0 w-0 h-[2px] bg-brand-yellow transition-all duration-300 group-hover:w-full"></span>
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="flex items-center gap-4 border-l border-zinc-200 pl-8">
+                                <a href={SITE_CONFIG.whatsapp} target="_blank" className="text-zinc-600 hover:text-green-600 font-medium text-sm flex items-center transition-colors">
+                                    <i className="ph ph-whatsapp-logo mr-1.5 text-lg"></i> Chat
+                                </a>
+                                <Button variant="primary" className="py-2.5 px-6 text-xs" onClick={() => handleNav('Contact')}>Start a Project</Button>
+                            </div>
+                        </div>
+
+                        {/* Mobile Toggle */}
+                        <button className="lg:hidden relative z-50 text-2xl p-2 focus:outline-none" aria-label="Menu" onClick={() => setIsOpen(!isOpen)}>
+                            <i className={`ph ${isOpen ? 'ph-x' : 'ph-list'}`}></i>
+                        </button>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    <div className={`fixed inset-0 bg-white z-40 transition-transform duration-300 ease-in-out lg:hidden flex flex-col pt-24 px-6 ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+                        <ul className="flex flex-col gap-6 text-2xl font-bold mb-10">
+                            {links.map(link => (
+                                <li key={link}>
+                                    <button onClick={() => handleNav(link)} className="hover:text-brand-yellow transition-colors w-full text-left border-b border-zinc-100 pb-4">{link}</button>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="flex flex-col gap-4 mt-auto mb-12">
+                             <a href={SITE_CONFIG.whatsapp} target="_blank" className="flex items-center justify-center p-4 bg-zinc-50 rounded-xl text-lg font-semibold border border-zinc-200">
+                                <i className="ph ph-whatsapp-logo text-green-500 mr-2 text-2xl"></i> WhatsApp Us
+                             </a>
+                            <Button variant="primary" className="w-full text-lg py-4" onClick={() => handleNav('Contact')}>Start a Project</Button>
+                        </div>
+                    </div>
+                </nav>
+            );
+        };
+
+        const Hero = ({ onContactClick }) => {
+            return (
+                <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-brand-gray">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                            
+                            {/* Left: Content */}
+                            <div className="max-w-2xl reveal relative z-20 order-2 lg:order-1">
+                                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-bold tracking-widest text-zinc-600 mb-6 shadow-sm">
+                                    <span className="w-2 h-2 rounded-full bg-brand-yellow"></span>
+                                    DIGITAL • CREATIVE • BUSINESS • TECHNOLOGY
+                                </div>
+                                <h1 className="text-5xl md:text-6xl lg:text-[5rem] font-extrabold tracking-tighter mb-6 leading-[1.05] text-brand-dark">
+                                    Build.<br/>
+                                    <span className="text-brand-yellow relative inline-block">
+                                        Grow.
+                                        <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 100 20" preserveAspectRatio="none"><path d="M0 15 Q 50 0 100 15" fill="none" stroke="#FACC15" strokeWidth="4"/></svg>
+                                    </span><br/>
+                                    Transform.
+                                </h1>
+                                <p className="text-lg md:text-xl text-zinc-600 mb-10 leading-relaxed max-w-lg font-medium">
+                                    Creative technology and business solutions designed to help brands grow, operate smarter, and build a stronger digital presence.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4">
+                                    <Button variant="primary" onClick={() => {document.getElementById('services').scrollIntoView({behavior: 'smooth'})}}>Explore Services</Button>
+                                    <Button variant="outline" onClick={onContactClick}>Start a Project</Button>
+                                </div>
+                            </div>
+
+                            {/* Right: Actual Image */}
+                            <div className="relative h-[350px] sm:h-[450px] lg:h-[600px] w-full rounded-3xl overflow-hidden reveal reveal-delay-2 shadow-2xl order-1 lg:order-2">
+                                <div className="absolute inset-0 bg-brand-dark/10 z-10 mix-blend-overlay"></div>
+                                <img 
+                                    src={IMAGES.hero} 
+                                    alt="Prime Creative Technologies digital agency workspace" 
+                                    className="w-full h-full object-cover object-center"
+                                    fetchpriority="high"
+                                />
+                                {/* Decorative elements */}
+                                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-brand-yellow rounded-full blur-3xl opacity-30 z-0"></div>
+                                <div className="absolute -top-6 -right-6 w-40 h-40 bg-brand-blue rounded-full blur-3xl opacity-20 z-0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ServicesGrid = ({ onOpenModal }) => {
+            return (
+                <section id="services" className="py-24 md:py-32 bg-white relative">
+                    <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-zinc-200 to-transparent"></div>
+                    <div className="max-w-7xl mx-auto px-6 md:px-12">
+                        <SectionHeader 
+                            badge="What We Do"
+                            title="Everything You Need to Build and Grow" 
+                            subtitle="From digital presence to business operations, we bring creative, technology, marketing, and business solutions together under one roof."
+                        />
+                        
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+                            {SERVICES_DATA.map((service, index) => (
+                                <button 
+                                    key={service.id} 
+                                    onClick={() => onOpenModal(service)}
+                                    className={`group text-left p-6 md:p-8 rounded-3xl border border-zinc-100 bg-white hover:border-brand-yellow hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 relative overflow-hidden reveal flex flex-col outline-none focus:ring-2 focus:ring-brand-yellow`}
+                                    style={{ transitionDelay: `${(index % 4) * 50}ms` }}
+                                >
+                                    <div className="absolute top-0 right-0 w-24 h-24 bg-brand-yellow/5 rounded-bl-[100px] -z-10 group-hover:bg-brand-yellow/10 transition-colors duration-500"></div>
+                                    <div className="w-12 h-12 rounded-xl bg-zinc-50 border border-zinc-100 flex items-center justify-center text-2xl text-brand-dark mb-6 group-hover:-translate-y-1 group-hover:bg-brand-yellow group-hover:border-brand-yellow transition-all duration-300 shadow-sm">
+                                        <i className={`ph ${service.icon}`}></i>
+                                    </div>
+                                    <div className="text-[10px] font-bold tracking-widest text-zinc-400 uppercase mb-3">{service.cat}</div>
+                                    <h3 className="text-lg md:text-xl font-bold mb-3 text-brand-dark group-hover:text-black leading-tight">{service.title}</h3>
+                                    <p className="text-sm text-zinc-500 mb-6 line-clamp-2 leading-relaxed">{service.desc}</p>
+                                    <div className="mt-auto flex items-center text-sm font-semibold text-brand-dark group-hover:text-brand-yellow transition-colors">
+                                        Explore Service <i className="ph ph-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+
+        const VisualSection = ({ id, badge, title, list, imageSrc, imageAlt, cta, reverse = false, dark = false, onCtaClick }) => {
+            const bgClass = dark ? 'bg-brand-dark text-white' : 'bg-white text-brand-dark';
+            const imgContainerClass = "relative h-[400px] lg:h-[550px] w-full rounded-3xl overflow-hidden reveal shadow-2xl img-hover-zoom";
+            
+            return (
+                <section id={id} className={`py-20 md:py-28 overflow-hidden ${bgClass} border-b ${dark ? 'border-zinc-800' : 'border-zinc-100'}`}>
+                    <div className="max-w-7xl mx-auto px-6 md:px-12">
+                        <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${reverse ? 'lg:rtl' : ''}`}>
+                            
+                            {/* Image Side */}
+                            <div className={`${reverse ? 'order-2 lg:order-2 lg:ltr' : 'order-2 lg:order-1'} ${imgContainerClass}`}>
+                                <div className="absolute inset-0 bg-brand-dark/5 mix-blend-multiply z-10"></div>
+                                <img src={imageSrc} alt={imageAlt} loading="lazy" className="w-full h-full object-cover object-center relative z-0" />
+                            </div>
+                            
+                            {/* Content Side */}
+                            <div className={`reveal reveal-delay-1 ${reverse ? 'order-1 lg:order-1 lg:ltr' : 'order-1 lg:order-2'}`}>
+                                <Badge color={dark ? 'dark' : 'yellow'}>{badge}</Badge>
+                                <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight mt-6 mb-8 leading-tight">{title}</h2>
+                                <ul className="space-y-4 mb-10">
+                                    {list.map((item, i) => (
+                                        <li key={i} className="flex items-start text-base md:text-lg">
+                                            <div className={`mt-1 mr-4 w-6 h-6 rounded-full flex items-center justify-center shrink-0 ${dark ? 'bg-brand-yellow text-black' : 'bg-brand-dark text-white'}`}>
+                                                <i className="ph ph-check text-xs font-bold"></i>
+                                            </div>
+                                            <span className={dark ? 'text-zinc-300' : 'text-zinc-700'}>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <Button variant={dark ? 'secondary' : 'primary'} onClick={onCtaClick}>{cta}</Button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ProcessSection = () => {
+            const steps = [
+                { n: '01', t: 'Discover' }, { n: '02', t: 'Analyze' }, { n: '03', t: 'Plan' }, 
+                { n: '04', t: 'Create' }, { n: '05', t: 'Launch' }, { n: '06', t: 'Optimize' }
+            ];
+            return (
+                <section className="py-24 bg-brand-gray border-y border-zinc-200">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12">
+                        <SectionHeader badge="Our Methodology" title="How We Deliver Results" />
+                        <div className="relative mt-16">
+                            <div className="hidden md:block absolute top-1/2 left-6 right-6 h-1 bg-zinc-200 -translate-y-1/2 z-0 rounded-full"></div>
+                            <div className="grid grid-cols-2 md:grid-cols-6 gap-8 relative z-10">
+                                {steps.map((step, i) => (
+                                    <div key={i} className={`flex flex-col items-center text-center reveal`} style={{ transitionDelay: `${i * 100}ms` }}>
+                                        <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white border-[3px] border-zinc-200 flex items-center justify-center text-xl font-black mb-4 shadow-sm transition-all duration-300 hover:border-brand-yellow hover:bg-brand-yellow hover:scale-110">
+                                            {step.n}
+                                        </div>
+                                        <div className="font-bold text-sm md:text-base text-brand-dark">{step.t}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const EducationSection = ({ onContactClick }) => (
+            <section id="education" className="py-24 md:py-32 bg-white relative overflow-hidden">
+                <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                        <div className="reveal order-2 lg:order-1">
+                            <Badge color="blue">Professional Training</Badge>
+                            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-6 mb-6 leading-tight">Learn Skills That Move Your Career Forward</h2>
+                            <p className="text-lg text-zinc-600 mb-8">Master practical digital marketing, SEO, video editing, and business planning with our intensive, hands-on training programs.</p>
+                            
+                            <div className="space-y-4 mb-10">
+                                {['Digital Marketing Fundamentals', 'Social Media & Content Strategy', 'SEO & Google Business Profile', 'Paid Advertising & Analytics'].map((mod, i) => (
+                                    <div key={i} className="flex items-center p-4 bg-brand-gray rounded-xl border border-zinc-100">
+                                        <div className="text-brand-blue mr-4 font-mono font-bold">M{i+1}</div>
+                                        <div className="font-semibold text-brand-dark text-sm md:text-base">{mod}</div>
+                                    </div>
+                                ))}
+                            </div>
+                            <Button variant="primary" onClick={onContactClick}>Join the Course</Button>
+                        </div>
+                        
+                        <div className="relative h-[450px] lg:h-[650px] rounded-3xl overflow-hidden reveal reveal-delay-1 shadow-2xl order-1 lg:order-2 img-hover-zoom">
+                             <img src={IMAGES.onlineLearning} alt="Online digital marketing learning" loading="lazy" className="w-full h-full object-cover object-center" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+
+        const PortfolioSection = () => {
+            // Placeholder data driven
+            const projects = [
+                { id: 1, title: 'E-commerce Growth', cat: 'Digital Marketing', img: 'https://niyazio.com/wp-content/uploads/2026/09/E-commerce-Growth.png' },
+                { id: 2, title: 'Corporate Promo', cat: 'Video Editing', img: 'https://niyazio.com/wp-content/uploads/2026/09/Corporate-Promo.png' },
+                { id: 3, title: 'Brand Aesthetic', cat: 'Social Media', img: 'https://niyazio.com/wp-content/uploads/2026/09/Brand-Aesthetic.png' },
+                { id: 4, title: 'Local Search Dominance', cat: 'SEO', img: 'https://niyazio.com/wp-content/uploads/2026/09/Local-Search-Dominance.png' }
+            ];
+
+            return (
+                <section id="portfolio" className="py-24 md:py-32 bg-brand-dark text-white">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                            <div className="max-w-2xl">
+                                <Badge color="dark">Our Work</Badge>
+                                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mt-6 leading-tight">Digital excellence in action.</h2>
+                            </div>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-8">
+                            {projects.map((p, i) => (
+                                <div key={p.id} className="group cursor-pointer reveal" style={{ transitionDelay: `${i * 100}ms` }}>
+                                    <div className={`aspect-[16/10] rounded-2xl mb-6 overflow-hidden relative flex items-center justify-center border border-zinc-800 bg-zinc-900`}>
+                                        <img src={p.img} alt={p.title} loading="lazy" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                                            <div className="w-16 h-16 rounded-full bg-brand-yellow text-black flex items-center justify-center transform scale-50 group-hover:scale-100 transition-transform duration-500 shadow-xl">
+                                                <i className="ph ph-arrow-up-right text-2xl font-bold"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div className="text-brand-yellow text-xs font-bold uppercase tracking-wider mb-2">{p.cat}</div>
+                                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-zinc-300 transition-colors">{p.title}</h3>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const ContactForm = ({ selectedServiceId }) => {
+            const [status, setStatus] = useState('idle');
+            const [formData, setFormData] = useState({
+                name: '', email: '', phone: '', company: '', service: selectedServiceId || '', budget: '', message: ''
+            });
+
+            // Update local form state when selectedServiceId changes from parent
+            useEffect(() => {
+                if (selectedServiceId) {
+                    setFormData(prev => ({ ...prev, service: selectedServiceId }));
+                }
+            }, [selectedServiceId]);
+
+            const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                setStatus('loading');
+                
+                // Construct WhatsApp Message
+                const text = `Hello Prime Creative Technologies,\n\nI would like to enquire about your services.\n\nName: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nService: ${formData.service}\nMessage: ${formData.message}`;
+                const url = `https://wa.me/917259184159?text=${encodeURIComponent(text)}`;
+
+                // Process and redirect to WhatsApp
+                setTimeout(() => {
+                    setStatus('success');
+                    window.open(url, '_blank');
+                    setFormData({name: '', email: '', phone: '', company: '', service: selectedServiceId || '', budget: '', message: ''});
+                    setTimeout(() => setStatus('idle'), 5000);
+                }, 800);
+            };
+
+            const inputClass = "w-full bg-zinc-50 border border-zinc-200 rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-brand-dark focus:ring-1 focus:ring-brand-dark transition-colors";
+            const labelClass = "block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-2";
+
+            return (
+                <section id="contact" className="py-24 md:py-32 bg-white relative">
+                    <div className="max-w-7xl mx-auto px-6 md:px-12">
+                        <div className="grid lg:grid-cols-5 gap-16">
+                            
+                            {/* Contact Info */}
+                            <div className="lg:col-span-2 reveal">
+                                <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6">Have an idea? <br/><span className="text-brand-yellow">Let's build it.</span></h2>
+                                <p className="text-zinc-600 mb-12 text-lg">Whether you need digital marketing, creative content, business planning, technology solutions or professional training, let's turn your next idea into a practical digital solution.</p>
+                                
+                                <div className="space-y-8">
+                                    <a href={SITE_CONFIG.whatsapp} target="_blank" className="flex items-center group">
+                                        <div className="w-12 h-12 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-2xl mr-4 group-hover:bg-green-500 group-hover:text-white transition-colors"><i className="ph ph-whatsapp-logo"></i></div>
+                                        <div>
+                                            <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">WhatsApp Us</div>
+                                            <div className="font-semibold text-brand-dark group-hover:text-green-600 transition-colors">+91 {SITE_CONFIG.phone}</div>
+                                        </div>
+                                    </a>
+                                    <a href={SITE_CONFIG.phoneLink} className="flex items-center group">
+                                        <div className="w-12 h-12 bg-zinc-50 text-brand-dark rounded-full flex items-center justify-center text-xl mr-4 group-hover:bg-brand-dark group-hover:text-white transition-colors"><i className="ph ph-phone"></i></div>
+                                        <div>
+                                            <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">Call Us</div>
+                                            <div className="font-semibold text-brand-dark">{SITE_CONFIG.phone}</div>
+                                        </div>
+                                    </a>
+                                    <a href={`mailto:${SITE_CONFIG.email}`} className="flex items-center group">
+                                        <div className="w-12 h-12 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center text-xl mr-4 group-hover:bg-brand-blue group-hover:text-white transition-colors"><i className="ph ph-envelope-simple"></i></div>
+                                        <div>
+                                            <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider mb-1">Email Us</div>
+                                            <div className="font-semibold text-brand-dark break-all">{SITE_CONFIG.email}</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Form */}
+                            <div className="lg:col-span-3 reveal reveal-delay-1">
+                                <form onSubmit={handleSubmit} className="bg-white border border-zinc-100 shadow-2xl rounded-3xl p-8 md:p-10">
+                                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                                        <div>
+                                            <label className={labelClass}>Full Name *</label>
+                                            <input type="text" name="name" required value={formData.name} onChange={handleChange} className={inputClass} placeholder="John Doe" />
+                                        </div>
+                                        <div>
+                                            <label className={labelClass}>Email Address *</label>
+                                            <input type="email" name="email" required value={formData.email} onChange={handleChange} className={inputClass} placeholder="john@example.com" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                                        <div>
+                                            <label className={labelClass}>Phone / WhatsApp *</label>
+                                            <input type="tel" name="phone" required value={formData.phone} onChange={handleChange} className={inputClass} placeholder="+91 XXXXX XXXXX" />
+                                        </div>
+                                        <div>
+                                            <label className={labelClass}>Company / Business</label>
+                                            <input type="text" name="company" value={formData.company} onChange={handleChange} className={inputClass} placeholder="Your Company" />
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-6">
+                                        <label className={labelClass}>Service Required *</label>
+                                        <select name="service" required value={formData.service} onChange={handleChange} className={`${inputClass} appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNzFBNTQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=')] bg-no-repeat bg-[position:calc(100%-1rem)_center] bg-[length:1.2em]`}>
+                                            <option value="" disabled>Select a service</option>
+                                            {SERVICES_DATA.map(s => <option key={s.id} value={s.title}>{s.title}</option>)}
+                                            <option value="Other">Other Inquiry</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="mb-8">
+                                        <label className={labelClass}>Message *</label>
+                                        <textarea name="message" required value={formData.message} onChange={handleChange} rows="4" className={inputClass} placeholder="Tell us about your project..."></textarea>
+                                    </div>
+
+                                    <Button variant="primary" type="submit" disabled={status === 'loading'} className="w-full py-4 text-base shadow-xl">
+                                        {status === 'loading' ? 'Sending Enquiry...' : 'Send Enquiry'}
+                                    </Button>
+
+                                    {status === 'success' && (
+                                        <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-xl text-sm font-medium flex items-center animate-fade-in">
+                                            <i className="ph ph-check-circle text-xl mr-2"></i> Form capability ready. Backend required for actual delivery.
+                                        </div>
+                                    )}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => (
+            <footer className="bg-brand-dark text-white pt-24 pb-10 border-t border-zinc-800">
+                <div className="max-w-7xl mx-auto px-6 md:px-12">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-10 lg:gap-16 mb-16">
+                        
+                        <div className="col-span-2 lg:col-span-4">
+                            <img src={IMAGES.logo} alt="PCT Logo" className="h-10 w-auto mb-6 brightness-0 invert" />
+                            <p className="text-zinc-400 text-sm leading-relaxed max-w-sm mb-8">
+                                Creative technology and business solutions designed to help brands grow, operate smarter, and build a stronger digital presence.
+                            </p>
+                            <div className="flex gap-4">
+                                {Object.keys(SITE_CONFIG.socials).map(social => (
+                                    <a key={social} href={SITE_CONFIG.socials[social]} target="_blank" rel="noopener noreferrer" aria-label={social} className="w-10 h-10 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:bg-brand-yellow hover:text-black transition-all">
+                                        <i className={`ph-fill ph-${social}-logo`}></i>
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                        
+                        <div className="col-span-2 lg:col-span-3">
+                            <h4 className="font-bold uppercase tracking-wider text-xs mb-6 text-brand-yellow">Core Services</h4>
+                            <ul className="space-y-4 text-sm text-zinc-400">
+                                <li><a href="#services" className="hover:text-white transition-colors">Digital Marketing</a></li>
+                                <li><a href="#services" className="hover:text-white transition-colors">Video & Creative Studio</a></li>
+                                <li><a href="#services" className="hover:text-white transition-colors">SEO & Analytics</a></li>
+                                <li><a href="#services" className="hover:text-white transition-colors">Business Setup</a></li>
+                            </ul>
+                        </div>
+
+                        <div className="col-span-2 lg:col-span-2">
+                            <h4 className="font-bold uppercase tracking-wider text-xs mb-6 text-brand-yellow">Company</h4>
+                            <ul className="space-y-4 text-sm text-zinc-400">
+                                <li><a href="#solutions" className="hover:text-white transition-colors">Solutions</a></li>
+                                <li><a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a></li>
+                                <li><a href="#education" className="hover:text-white transition-colors">Courses</a></li>
+                                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+                            </ul>
+                        </div>
+
+                        <div className="col-span-2 lg:col-span-3">
+                            <h4 className="font-bold uppercase tracking-wider text-xs mb-6 text-brand-yellow">Contact Us</h4>
+                            <ul className="space-y-4 text-sm text-zinc-400">
+                                <li className="flex items-start">
+                                    <i className="ph ph-envelope-simple mt-1 mr-3 text-lg text-zinc-500"></i>
+                                    <a href={`mailto:${SITE_CONFIG.email}`} className="break-all hover:text-white transition-colors">{SITE_CONFIG.email}</a>
+                                </li>
+                                <li className="flex items-start">
+                                    <i className="ph ph-phone mt-1 mr-3 text-lg text-zinc-500"></i>
+                                    <a href={SITE_CONFIG.phoneLink} className="hover:text-white transition-colors">+91 {SITE_CONFIG.phone}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500 font-medium">
+                        <p>&copy; {new Date().getFullYear()} Prime Creative Technologies. All rights reserved.</p>
+                        <div className="flex gap-6 mt-4 md:mt-0">
+                            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
+                            <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        );
+
+        const App = () => {
+            useIntersectionObserver();
+            
+            // Global State for Form selection
+            const [selectedFormService, setSelectedFormService] = useState('');
+            
+            // Modal State
+            const [isModalOpen, setIsModalOpen] = useState(false);
+            const [activeService, setActiveService] = useState(null);
+
+            const handleOpenModal = (service) => {
+                setActiveService(service);
+                setIsModalOpen(true);
+            };
+
+            const handleSelectServiceForContact = (serviceTitle) => {
+                setSelectedFormService(serviceTitle);
+                setTimeout(() => {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                }, 300); // Wait for modal close
+            };
+
+            const handleGenericContactClick = () => {
+                setSelectedFormService('');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            };
+
+            return (
+                <div className="min-h-screen flex flex-col bg-brand-gray">
+                    <Navbar />
+                    
+                    <main className="flex-grow">
+                        <Hero onContactClick={handleGenericContactClick} />
+                        
+                        <AdSenseUnit />
+
+                        <ServicesGrid onOpenModal={handleOpenModal} />
+                        
+                        <AdSenseUnit />
+
+                        {/* Detailed Feature Sections Mapping to Images */}
+                        <div id="solutions">
+                            <VisualSection 
+                                id="marketing"
+                                badge="Growth"
+                                title="Digital Marketing That Drives Attention Into Action"
+                                imageSrc={IMAGES.digitalMarketing}
+                                imageAlt="Digital marketing strategy and analytics"
+                                list={['Data-driven campaign strategy', 'Social media & Content strategy', 'Lead generation & Paid Ads', 'Performance analysis']}
+                                cta="Discuss Strategy"
+                                reverse={false}
+                                onCtaClick={() => handleSelectServiceForContact('Digital Marketing')}
+                            />
+
+                            <VisualSection 
+                                id="video"
+                                badge="Production"
+                                title="Turn Ideas Into Visual Stories"
+                                imageSrc={IMAGES.videoEditing}
+                                imageAlt="Professional video editing studio"
+                                list={['High-retention short-form reels', 'YouTube & Promotional videos', 'Corporate & Educational content', 'Professional post-production']}
+                                cta="Discuss Your Video Project"
+                                reverse={true}
+                                dark={true}
+                                onCtaClick={() => handleSelectServiceForContact('Video Editing')}
+                            />
+                            
+                            <VisualSection 
+                                id="creative"
+                                badge="Creative"
+                                title="Full-Scale Creative Studio Production"
+                                imageSrc={IMAGES.creativeStudio}
+                                imageAlt="Creative production workspace"
+                                list={['Video Production & Direction', 'Product Content Creation', 'Social Media Visuals', 'Brand Aesthetics']}
+                                cta="Start Creative Project"
+                                reverse={false}
+                                onCtaClick={() => handleSelectServiceForContact('Video Editing')}
+                            />
+
+                            <VisualSection 
+                                id="social"
+                                badge="Social"
+                                title="Your Social Media. Strategically Managed."
+                                imageSrc={IMAGES.socialMedia}
+                                imageAlt="Social media content management"
+                                list={['Content Planning & Calendar', 'Post Design & Caption Writing', 'Reels Strategy & Publishing', 'Community Management & Analytics']}
+                                cta="Manage My Social Media"
+                                reverse={true}
+                                onCtaClick={() => handleSelectServiceForContact('Social Media Management')}
+                            />
+
+                            <AdSenseUnit />
+
+                            <VisualSection 
+                                id="seo"
+                                badge="Search"
+                                title="Get Found. Get Trusted."
+                                imageSrc={IMAGES.seo}
+                                imageAlt="SEO analytics dashboard"
+                                list={['Technical & On-page SEO', 'Keyword Research & Content Strategy', 'Local SEO & Search Visibility', 'In-depth Analytics & Reporting']}
+                                cta="Improve My SEO"
+                                reverse={false}
+                                dark={true}
+                                onCtaClick={() => handleSelectServiceForContact('SEO & Analytics')}
+                            />
+
+                            <VisualSection 
+                                id="gbp"
+                                badge="Local"
+                                title="Make Your Business Easier to Find"
+                                imageSrc={IMAGES.gbp}
+                                imageAlt="Google Business Profile management"
+                                list={['Profile setup & optimization', 'Accurate business & location info', 'Review management strategy', 'Performance insights tracking']}
+                                cta="Improve My Local Presence"
+                                reverse={true}
+                                onCtaClick={() => handleSelectServiceForContact('Google Business Profile')}
+                            />
+                            
+                            <VisualSection 
+                                id="analysis"
+                                badge="Strategy"
+                                title="Understand the Market Before You Invest"
+                                imageSrc={IMAGES.marketAnalysis}
+                                imageAlt="Business market analysis meeting"
+                                list={['Market & Competitor Analysis', 'Customer & Industry Profiling', 'Digital Presence Auditing', 'Opportunity & Growth Planning']}
+                                cta="Analyze My Business"
+                                reverse={false}
+                                onCtaClick={() => handleSelectServiceForContact('Business & Market Analysis')}
+                            />
+
+                            <ProcessSection />
+
+                            <VisualSection 
+                                id="setup"
+                                badge="Operations"
+                                title="From Idea to Operating Business"
+                                imageSrc={IMAGES.businessSetup}
+                                imageAlt="Business setup consultation"
+                                list={['Business & Website planning', 'Digital presence & Social setup', 'Workflow & Technology planning', 'Marketing foundation deployment']}
+                                cta="Plan My Business"
+                                reverse={true}
+                                onCtaClick={() => handleSelectServiceForContact('Business Setup')}
+                            />
+
+                            <AdSenseUnit />
+
+                            <VisualSection 
+                                id="sap"
+                                badge="Technology"
+                                title="Business Software & Technology Solutions"
+                                imageSrc={IMAGES.sap}
+                                imageAlt="SAP technology training"
+                                list={['Authorized SAP access / support', 'Essential business software setup', 'Digital workflows & automations', 'Technology & Systems guidance']}
+                                cta="Upgrade Technology"
+                                reverse={false}
+                                dark={true}
+                                onCtaClick={() => handleSelectServiceForContact('SAP & Software Solutions')}
+                            />
+                        </div>
+
+                        <EducationSection onContactClick={() => handleSelectServiceForContact('Online Learning')} />
+                        <PortfolioSection />
+                        
+                        <AdSenseUnit />
+
+                        <ContactForm selectedServiceId={selectedFormService} />
+                    </main>
+
+                    <Footer />
+                    
+                    <FloatingContact />
+
+                    <ServiceModal 
+                        isOpen={isModalOpen} 
+                        service={activeService} 
+                        onClose={() => setIsModalOpen(false)} 
+                        onSelectService={handleSelectServiceForContact}
+                    />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
